@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<link href="css/jqcart.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jqcart.min.js"></script>
+<script>
+$(function(){
+	'use strict';	
+	// инициализация плагина
+	$.jqCart({
+			buttons: '.add_item',
+			handler: '/php/handler.php',
+			cartLabel: '.label-place',
+			visibleLabel: true,
+			openByAdding: false,
+			currency: '&#8372'//'&euro;'
+	});	
+	// Пример с дополнительными методами
+	$('#open').click(function(){
+		$.jqCart('openCart'); // открыть корзину
+	});
+	$('#clear').click(function(){
+		$.jqCart('clearCart'); // очистить корзину
+	});	
+});
+</script>
+<style type="text/css">
+/* Стили для демо (таблица товаров) */
+#wrapper {
+    width: 50%;
+    margin: 10px;
+}
+#label-place {
+    margin: 10px 0;
+}
+.item_box {
+    border: 1px solid #999;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.item_box::after {
+  content:'';
+  display: table;
+  clear: left;
+}
+.item_box > img {
+  float: left;
+}
+.shopping_list {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+.shopping_list td, .shopping_list th {
+    padding: 10px;
+    border: 1px solid #AAAAAA;
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+  <div class="label-place"></div><!-- Элемент, где будет расположен ярлык корзины -->
+  <br>
+  <div class="item_box">
+  	<img src="img/samsung.png" alt="">
+    <h3 class="item_title">Samsung Galaxy S10</h3>
+    <p>Цена: <span class="item_price">20</span>&#8372</p>
+    <button class="add_item" data-id="1" data-title="Samsung Galaxy S10" data-price="20" data-img="http://incode.pro/demo/icp_example20/img/samsung.png" data-count="100500">Добавить в корзину</button>
+  </div>
+  <div class="item_box">
+  	<img src="img/lg.png" alt="">
+    <h3 class="item_title">LG Optimus G E100500</h3>
+    <p>Цена: <span class="item_price">0.6</span>$</p>
+    <button class="add_item" data-id="2" data-title="LG Optimus G E100500" data-price="0.6" data-img="http://incode.pro/demo/icp_example20/img/lg.png">Добавить в корзину</button>
+  </div>
+  <div class="item_box">
+	  <img src="img/nokia.png" alt="">
+    <h3 class="item_title">Nokia 2110</h3>
+    <p>Цена: <span class="item_price">1000</span>$</p>
+    <button class="add_item" data-id="3" data-title="Nokia 2110" data-price="1000" data-img="http://incode.pro/demo/icp_example20/img/nokia.png">Добавить в корзину</button>
+  </div>
+</div>
+<p>
+  <button id="clear">Очистить корзину (вызов метода clearCart)</button>
+  <button id="open">Открыть корзину (вызов метода openCart)</button>
+</p>
+</body>
+</html>

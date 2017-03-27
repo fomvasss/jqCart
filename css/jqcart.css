@@ -1,0 +1,274 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+/* ------------- Стили для корзины ------------- */
+/* Ярлык корзины */
+.jqcart-cart-label {
+    position: relative;
+    text-align: center;
+    letter-spacing: -0.36em;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.jqcart-cart-label span {
+    display: inline-block;
+    padding: 3px 10px;
+    letter-spacing: normal;
+    background: #b8c6df;
+    background: -moz-linear-gradient(top, #b8c6df 0%, #6d88b7 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b8c6df), color-stop(100%, #6d88b7));
+    background: -webkit-linear-gradient(top, #b8c6df 0%, #6d88b7 100%);
+    background: -o-linear-gradient(top, #b8c6df 0%, #6d88b7 100%);
+    background: -ms-linear-gradient(top, #b8c6df 0%, #6d88b7 100%);
+    background: linear-gradient(to bottom, #b8c6df 0%, #6d88b7 100%);
+    color: #F7F7F7;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.jqcart-cart-label .jqcart-title {
+    width: 70%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid #F7F7F7;
+    text-align: left;
+}
+.jqcart-cart-label .jqcart-total-cnt {
+    width: 20%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* Модальное окно */
+.jqcart-layout {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 998;
+}
+.jqcart-layout:before {
+    content:'';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.36em;
+}
+.jqcart-checkout {
+    display: inline-block;
+    width: 80%;
+    padding: 10px;
+    vertical-align: middle;
+    border-radius: 10px;
+    background-color: #F7F7F7;
+    box-shadow: 0 0 7px 5px rgba(0, 0, 0, .3);
+}
+/* Сообщение "Корзина пуста" */
+.jqcart-empty-cart {
+  padding: 50px 0; 
+}
+.jqcart-empty-cart::before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAXCAYAAAD+4+QTAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvRJREFUeNqklU1IVFEUx+d9OI5aWBFaUEELd1GRhmREZBBEtChbGbZw1VYoglYugqy20bJdEElRREQFRQS6iyACs7TMr4GSicbxI0dfvyP/V5eX6WAPfnPvuffcc86995w7ged5qRLYCGdhAUZhD7TCEORXWh/YTwnfOfTaoJz+UzhP/xSE9HsgWm6xX4KDvXAIRuCTDWC8j2YUGqFhJQMrOSnH4Gkwva9w33YeRdFd+uNQhXwSKv/HyQHYBT/hmXZj3wQ8hAXYAU2rdVJNhCdoy2AIHriT7OYxzQdYC8dgw2qc2C52wxR0w3cZj+en6N+hnYady+3mX05qoA0CeA3PEw7i75WyK8OuW2hrlzIWp3A12OWloQit0MzcN9rrGM9KJ5PA7mQcvf20m3V3b2CNJYV0ZizP2+GgnFrGXIUjyqiXOPhCe01O5t0AIQ+X4QmcYU2zHS1rOmi3K+DekImjdLZBwY4JBYvgHtTDTWhRpD8SRecp0uOsuYXOVvrvtb5JQdp8hUUzzEBGW/Tpb5GTF7APuV2XbkHM6UiMGbV16Exg/DZ923UH8iYF9RYsgMX3pQ6lLtq0IpxDtl2up5+TsQq1RR2VPTGz2lUl+ua0TE/PpMYvQJ+vrJlgcsxdiJzTM1KU4xHNhRob1sXbnK3PwawKNaP7zbkpbMfxUXKgo7iEc0vddbrgLuR3Su8BuGLBKSF66HdKLy0bg3L428mCqrfoRPpZ52ryDEaGVHgWZV5ZF+vndB+RHMw79v4UoxblpZRS3ZRroacIQwUU30kgOVRdxCcxqafor4q3wazGPBmPUqV/kVM/2fhvIenEdtFf4n9M0nAqUT+D8aUv9Xb1O1WdVwL4MjatOvF11gWN+0rtSecEBpZ6u+JvHvmwlM1QA3KNjNjiRuQqvcwZyZ7kWrr1CqRbf3IplYOXdNqpZ94XBScRIsmB5Dmndqp0Cr1wUXOLX5g4LlO6AWOqj6KTXb4yKZaDOEUlh0r5R64D+34JMACE9wt13OIvJgAAAABJRU5ErkJggg==');
+}
+/* Таблица с заказанными товарами */
+.jqcart-cart-title {
+	  position: relative;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    color: #6d88b7;
+}
+.jqcart-cart-title .jqcart-print-order {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.jqcart-cart-title .jqcart-print-order::before {
+  content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKvSURBVEiJtVXPS1RRFP7OuffNjAqSwYRli36ALoRapUObnMn5BxRHGfcNJQYRuAlpVdEoSBtlNuLGHwxh/QGi1EwKtmpTomaiRlBqIahv3nu922LGGad5DMNMffB457x7+b7vnnvufaSUwv+EdPo48mLoiWlaA0opx/G/QUSW5nZFH/Q/fFQwqJQqeJ4PPTWPj49UqTBNU0WHn5lOXI4OlVLS46nCzrctMDOYGYJFJhYFucftgW3bjlxFS8DMeJdcBBOBmMHEeTExI9jeXrR8RQUEC7S13TrlOrcCZpHNyxZgZiQSyYxzBjGlY2ZQ5h0MBisREAj4/Q6ucyshovIFBDPevklknAswU9Y5MwMA2ivZA2aBwO1AfgeJdAeVijyBnp6ORiHdy01NjTg4OMDh0WHauaC89nRCSk8h3Nvzy/5ttMzMzK4WCIRCobOe6pr5vnt9tVPTk9jY2EDK0HMloVxZnLC3v4/+/vu1o2Oj86FQ6Fo8Ht8HAFJKIRKJaHrqaLGjo/P67t53bXd3t+QSnEbdmTqc89abr17PfvC4q2/GYjFTAsCxfjhxo6Wl2e8PaJZlwjBSZQm4XB5oUmrbX7eb3y8vTwDolQCgp/Swr9WH9fU1CFH6BjrBtm34Wn1VyWQinBUA0pfe5uZmReQnaGi4mD0fWQFiBgvG1NRkReThcC+Yc4cvKyCZocl0GhuLlUUeuRuBJmVemSURUVd3J4Qmobld2YnlQnO7IDJGiYhkRsQyTUuer7+AwcHHZZOfwDAMEJEFQEoA0jCM8eHh6J1/9X8mIqXr+jgASQBqAFztDnfNBfx+7+Url8omVkrh08cVLC4trcanX3YB+CwB2ACsrS9b0QUsDMzN2d5K3LPgnbWVtREAFgCbAGgAvADqkOuq4pd8cagM+U8AP/4Ao2UdOzj4GL0AAAAASUVORK5CYII=');
+}
+/*.jqcart-table-wrapper {
+  height: 150px; /* максимальная высота для таблицы с товарами, после которой будет появляться прокрутка
+  padding: 0 5px;
+  overflow-x: auto;
+}*/
+
+.jqcart-manage-order {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+.jqcart-manage-order > div {
+    display: table-row;
+}
+.jqcart-manage-order .jqcart-row-group {
+    display: table-row-group;
+}
+.jqcart-manage-order > div > div {
+    display: table-cell;
+    padding: 5px;
+    border: 1px solid #CCC;
+    vertical-align: middle;
+}
+.jqcart-manage-order > div > div input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+.jqcart-manage-order .jqcart-small-td {
+  width: 5%;
+}
+.jqcart-manage-order .jqcart-item-img img {
+  max-width: 64px;
+  max-height: 64px;
+}
+.jqcart-thead {
+    font-weight: bold;
+}
+.jqcart-thead div {
+    text-align: center;
+}
+.jqcart-subtotal {
+    font-size: 1.2em;
+    text-align: right;
+}
+.jqcart-incr {
+    display: inline-block;
+    font-size: 1.1em;
+    padding: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Кнопка удаления отдельного товара из корзины */
+.jqcart-del-item {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-family: Arial;
+    text-align: center;
+    border: 2px solid #F00;
+    background-color: #f00;
+    color: #FFF;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.jqcart-del-item:before {
+  display: inline-block;
+  content: 'X';
+  vertical-align: text-bottom;
+}
+.jqcart-del-item:hover {
+    color: #F00;
+    background-color: #FFF;
+    
+}
+/* Форма для заказчика */
+.jqcart-orderform {
+    text-align: left;
+}
+.jqcart-orderform::after {
+    display: table;
+    content: '';
+    clear: both;
+}
+.jqcart-orderform p {
+    margin: 0 0 10px 0;
+}
+.jqcart-orderform label {
+    position: relative;
+    display: inline-block;
+    min-width: 150px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.jqcart-orderform p:nth-child(5) label {
+    vertical-align: top;
+}
+.jqcart-orderform label::after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 100%;
+    border-bottom: 1px dotted #CCC;
+}
+.jqcart-orderform p:last-child {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #CCC; 
+}
+.jqcart-orderform input[type=text],
+.jqcart-orderform textarea {
+    width: 250px;
+    padding: 3px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    resize: vertical;
+}
+.jqcart-orderform input[type=submit],
+.jqcart-orderform input[type=reset] {
+    padding: 5px;
+}
+.jqcart-orderform input[type=reset] {
+    float: right;
+}
+.jqcart-error {
+    color: #f00;
+}
+
+@media print {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .jqcart-checkout {
+        background-color: #FFFFFF;
+        width: 100%;
+        margin: 0;
+        padding: 5px;
+        font-size: 14px;
+        line-height: 18px;
+        box-shadow: none;
+    }
+    .jqcart-checkout * {
+      padding: 2px;
+    }
+    .jqcart-checkout p {
+      margin: 0;
+    }
+    .jqcart-manage-order {
+      width: 99.9%;
+    }
+    .jqcart-orderform input[type="text"],
+    .jqcart-orderform textarea,
+    .jqcart-manage-order .jqcart-amount {
+      border-color: #FFFFFF;
+      box-shadow: none;
+      resize: none;
+    }
+    .jqcart-checkout input[type=submit],
+    .jqcart-checkout input[type=reset],
+    .jqcart-checkout .jqcart-cart-title,
+    .jqcart-checkout .jqcart-incr,
+    .jqcart-checkout .jqcart-manage-order > div > div:last-child {
+      display: none;
+    }
+    .jqcart-manage-order .jqcart-item-img img {
+      height: 32px;
+    }
+}
